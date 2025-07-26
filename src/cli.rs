@@ -25,4 +25,10 @@ pub enum Commands {
         #[arg(short, long)]
         local: bool,
     },
+    /// Generate shell completion script
+    Completions {
+        /// Shell to generate completions for (bash, zsh, fish, powershell, elvish)
+        #[arg(value_enum)]
+        shell: clap_complete::Shell,
+    },
 }
