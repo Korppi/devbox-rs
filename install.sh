@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
-
 set -e
 
+# Switch to the directory where this script lives
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# Optional guard
+if [ ! -f Cargo.toml ]; then
+  echo "Error: Cargo.toml not found. Please run install.sh from the project root." >&2
+  exit 1
+fi
+
+echo "Building Devbox with cargo..."
 echo "🔧 Building Devbox with cargo..."
 cargo build --release
 
