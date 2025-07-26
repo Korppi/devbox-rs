@@ -1,0 +1,42 @@
+name: Release
+
+# Aja aina kun pushaat tagin v*.*.* main‑haaraan
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+    branches:
+      - main
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build release
+        run: cargo build --release
+
+      - name: Package binary
+        run: |
+          mkdir dist
+          cp target/release/devbox dist/devbox-$(uname)-${{ github.ref_name }}
+      - name: Upload binaries
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/
+          asset_name: devbox-${{ runner.os }}-${{ github.ref_name }}.tar.gz
+          asset_content_type: application/gzip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

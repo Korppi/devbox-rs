@@ -1,6 +1,8 @@
 # Devbox
 
-![Rust](https://img.shields.io/badge/language-Rust-red) ![license: MIT](https://img.shields.io/badge/license-MIT-green)
+![Rust](https://img.shields.io/badge/language-Rust-red) ![license: MIT](https://img.shields.io/badge/license-MIT-green) ![CI](https://github.com/Korppi/devbox-rs/actions/workflows/ci.yml/badge.svg) ![Release](https://github.com/Korppi/devbox-rs/actions/workflows/release.yml/badge.svg)
+
+
 
 Devbox is a modular CLI toolbox for Linux admins, developers and power-users.  
 It’s built with Rust and Clap, and aggregates a growing set of small, focused commands—  
