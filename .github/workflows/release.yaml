@@ -1,41 +1,51 @@
 name: Release
 
-# Tarvitaan, koska haluamme luoda GitHub Release -objekteja
+# Tarvitsee write‑oikeudet GitHub Releasejen hallintaan
 permissions:
   contents: write
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
     branches:
       - main
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build-release:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    # Ajetaan sekä Linux- että Windows‑runnerilla
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
 
-      - name: Build release
-        run: cargo build --release
+    - name: Build release
+      run: cargo build --release
 
-      - name: Package binary
-        run: |
-          mkdir dist
-          cp target/release/devbox dist/
+    - name: Package binary (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        mkdir -p dist
+        cp target/release/devbox dist/devbox-linux-${{ github.ref_name }}
 
-      - name: Create GitHub Release & upload assets
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.ref_name }}
-          files: dist/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Package binary (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        mkdir dist
+        copy target\\release\\devbox.exe dist\\devbox-windows-${{ github.ref_name }}.exe
+
+    - name: Create GitHub Release & upload assets
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: dist/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
