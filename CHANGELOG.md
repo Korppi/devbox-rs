@@ -1,5 +1,8 @@
-Initial v0.1.0 release:
-- ip command
-- install scripts (install.ps1, install.sh)
-- base project with clap + sample commands
-- CI/CD workflows (build, test, release)
+## [0.2.0] – 2025‑07‑26
+### Added
+- Hide `completions`‑subcommand, so it wont show up in `--help` listing  
+### Fixed
+- Fixed `install.sh`:
+  - Script automatically changes to correct directory (`cd "$(dirname …)"`)  
+  - Check `Cargo.toml` exists  
+  - Makes sure `~/.cargo/bin` is in the `PATH` and added in `~/.bashrc`/`~/.zshrc`  
