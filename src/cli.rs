@@ -3,7 +3,8 @@ use clap::{ColorChoice, Parser, Subcommand};
 #[derive(Parser)]
 #[command(name = "devbox", 
 about = "Developer's toolbox",
-color = ColorChoice::Auto)]
+color = ColorChoice::Auto,
+version)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
