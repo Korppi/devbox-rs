@@ -1,0 +1,26 @@
+# --- Rust build output ---
+/target/
+
+# --- Cargo metadata ---
+**/Cargo.lock
+tarpaulin-report.*
+
+# --- IDEs ---
+# VS Code
+.vscode/
+
+# JetBrains (CLion, IntelliJ, RustRover)
+.idea/
+
+# --- OS / User ---
+.DS_Store
+Thumbs.db
+
+# --- Logs / temp ---
+*.log
+*.tmp
+
+# --- Misc --- 
+*.swp
+*.swo
+*.bak
