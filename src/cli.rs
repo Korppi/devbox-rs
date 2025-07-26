@@ -14,8 +14,8 @@ pub struct Cli {
 pub enum Commands {
     /// Show public or local IP of this machine
     #[command(
-    about = "Show public and/or local IP address.",
-    after_help = "Examples:\n  devbox ip \n  devbox ip --public \n  devbox ip -p"
+        about = "Show public and/or local IP address.",
+        after_help = "Examples:\n  devbox ip \n  devbox ip --public \n  devbox ip -p"
     )]
     Ip {
         /// Show only public IP address

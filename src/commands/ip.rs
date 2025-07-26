@@ -1,8 +1,13 @@
 use local_ip_address::local_ip;
 use reqwest::blocking::get;
-use std::io::{Write, Result};
+use std::io::{Result, Write};
 
-pub fn run(show_public: bool, show_local: bool, out: &mut dyn Write, err: &mut dyn Write) -> Result<()> {
+pub fn run(
+    show_public: bool,
+    show_local: bool,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> Result<()> {
     let show_both = !show_public && !show_local;
 
     if show_public || show_both {
@@ -54,7 +59,9 @@ mod tests {
 
         // Allow both success and fail
         assert!(
-            stdout.contains("Public IP:") || stderr.contains("Failed to fetch") || stderr.contains("Failed to read"),
+            stdout.contains("Public IP:")
+                || stderr.contains("Failed to fetch")
+                || stderr.contains("Failed to read"),
             "Expected public IP or error message"
         );
     }
@@ -75,7 +82,9 @@ mod tests {
 
         // Allow both success and fail
         assert!(
-            stdout.contains("Public IP:") || stderr.contains("Failed to fetch") || stderr.contains("Failed to read"),
+            stdout.contains("Public IP:")
+                || stderr.contains("Failed to fetch")
+                || stderr.contains("Failed to read"),
             "Expected public IP or error message"
         );
     }
