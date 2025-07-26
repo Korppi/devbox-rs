@@ -27,6 +27,7 @@ pub enum Commands {
         local: bool,
     },
     /// Generate shell completion script
+    #[command(hide = true)]
     Completions {
         /// Shell to generate completions for (bash, zsh, fish, powershell, elvish)
         #[arg(value_enum)]
