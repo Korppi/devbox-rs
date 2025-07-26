@@ -22,7 +22,7 @@ from networking helpers to Base64 encoding/decoding and beyond.
 ## 🚀 Installation
 
 ### Option 1 – Pre-built binary 
-➡️ *Coming soon on [Releases](https://github.com/Korppi/devbox-rs/releases)*
+Please download from [Releases](https://github.com/Korppi/devbox-rs/releases).
 
 ### Option 2 – Build from source 
 Please install [Rust and Cargo](https://www.rust-lang.org/tools/install) first.
