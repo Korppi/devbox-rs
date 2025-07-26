@@ -13,7 +13,7 @@ pub fn run(
     if show_public || show_both {
         match get("https://api.ipify.org") {
             Ok(res) => match res.text() {
-                Ok(ip) => writeln!(out, "Public IP: {}", ip)?,
+                Ok(ip) => writeln!(out, "Public IP: {ip}")?,
                 Err(_) => writeln!(err, "Error: Failed to read public IP response.")?,
             },
             Err(_) => writeln!(err, "Error: Failed to fetch public IP.")?,
@@ -22,7 +22,7 @@ pub fn run(
 
     if show_local || show_both {
         match local_ip() {
-            Ok(ip) => writeln!(out, "Local IP: {}", ip)?,
+            Ok(ip) => writeln!(out, "Local IP: {ip}")?,
             Err(_) => writeln!(err, "Error: Failed to get local IP.")?,
         }
     }
