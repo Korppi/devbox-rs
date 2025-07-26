@@ -19,11 +19,34 @@ from networking helpers to Base64 encoding/decoding and beyond.
 
 ## 🚀 Installation
 
-**Option 1 – Pre-built binary**  
-(coming soon)
+### Option 1 – Pre-built binary 
+➡️ *Coming soon on [Releases](https://github.com/Korppi/devbox-rs/releases)*
 
-**Option 2 – Build from source**  
-(coming soon)
+### Option 2 – Build from source 
+Please install [Rust and Cargo](https://www.rust-lang.org/tools/install) first.
+
+#### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/Korppi/devbox-rs.git
+cd devbox-rs
+.\install.ps1
+```
+❗ If you see an error like script execution is disabled, run instead:
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+#### Linux
+
+```bash
+git clone https://github.com/Korppi/devbox-rs.git
+cd devbox-rs
+./install.sh
+```
+If it fails with "permission denied":
+```bash
+chmod +x install.sh
+```
 
 ## 🛠️ Why Devbox?
 
