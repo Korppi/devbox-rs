@@ -60,7 +60,7 @@ TARGET_DIR=$(cargo metadata --format-version=1 --no-deps \
 
 # 2) Etsi build-hakemisto, jonka alihakemistossa on out/devbox.1
 #    esim. /home/user/devbox/target/debug/build/devbox-<hash>/out/devbox.1
-MAN_SOURCE=$(echo "${TARGET_DIR}"/build/devbox-*/out/devbox.1)
+MAN_SOURCE=$(echo "${TARGET_DIR}"/release/build/devbox-*/out/devbox.1)
 
 if [ ! -f "$MAN_SOURCE" ]; then
   echo "Virhe: man-sivua ei löytynyt osoitteesta $MAN_SOURCE" >&2
@@ -75,7 +75,7 @@ if command -v mandb >/dev/null 2>&1; then
   sudo mandb
 fi
 
-echo "✅ Man-sivu asennettu."
-echo "✅ Asennus valmis! Sulje ja avaa terminaali uudelleen, tai aja:"
+echo "Man-sivu asennettu."
+echo "Asennus valmis! Sulje ja avaa terminaali uudelleen, tai aja:"
 echo "   source ~/.bashrc"
 echo "   source ~/.devbox/devbox.bash"
