@@ -52,3 +52,36 @@ pub fn run(
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_run_without_flags() {
+        let mut out = Vec::new();
+        let mut err = Vec::new();
+        
+        run(false, false, false, false, Some("Hello".to_string()), &mut out, &mut err)
+            .unwrap();
+        let stdout = String::from_utf8_lossy(&out);
+
+        assert!(stdout.contains("SGVsbG8="), "Expected SGVsbG8=, got {:?}", stdout);
+    }
+
+    #[test]
+    fn test_run_json_pretty() {
+        let mut out = Vec::new();
+        let mut err = Vec::new();
+
+        run(true, true, false, false, Some("A".to_string()), &mut out, &mut err)
+            .unwrap();
+
+        let stdout = String::from_utf8_lossy(&out);
+        // This means JSON is split on two rows
+        assert!(stdout.contains(r#""input": "A""#));
+        assert!(stdout.contains(r#""encoded": "QQ==""#));
+    }
+
+    
+}
