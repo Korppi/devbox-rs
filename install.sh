@@ -51,19 +51,31 @@ else
     echo "Completion script already present in $PROFILE_FILE"
 fi
 
-# Man-sivun kopiointi
-echo "Installing man page…"
-if [ "$EUID" -ne 0 ]; then
-  echo "Note: copying man page requires sudo. Asking for elevation…"
-  sudo cp man/devbox.1 /usr/local/share/man/man1/
-  sudo mandb
-else
-  # jos jo root, ei tarvitse sudo
-  cp man/devbox.1 /usr/local/share/man/man1/
-  mandb
+# ===============================
+# Man-sivun asennus
+# ===============================
+# 1) Selvitä Cargo:n target-hakemisto JSON:lla
+TARGET_DIR=$(cargo metadata --format-version=1 --no-deps \
+  | jq -r '.target_directory')
+
+# 2) Etsi build-hakemisto, jonka alihakemistossa on out/devbox.1
+#    esim. /home/user/devbox/target/debug/build/devbox-<hash>/out/devbox.1
+MAN_SOURCE=$(echo "${TARGET_DIR}"/build/devbox-*/out/devbox.1)
+
+if [ ! -f "$MAN_SOURCE" ]; then
+  echo "Virhe: man-sivua ei löytynyt osoitteesta $MAN_SOURCE" >&2
+  exit 1
 fi
 
-echo "Done! Restart your terminal or run:"
-echo "  source ~/.bashrc"
-echo "  source ~/.devbox/devbox.bash"
-echo "Then you can use 'devbox' from anywhere."
+echo "Asennetaan man-sivu: $MAN_SOURCE → /usr/local/share/man/man1/devbox.1"
+sudo install -Dm644 "$MAN_SOURCE" /usr/local/share/man/man1/devbox.1
+
+# Päivitä man-tietokanta (vain Linuxissa)
+if command -v mandb >/dev/null 2>&1; then
+  sudo mandb
+fi
+
+echo "✅ Man-sivu asennettu."
+echo "✅ Asennus valmis! Sulje ja avaa terminaali uudelleen, tai aja:"
+echo "   source ~/.bashrc"
+echo "   source ~/.devbox/devbox.bash"
