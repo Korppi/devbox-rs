@@ -1,6 +1,10 @@
 ## [0.2.0] – 2025‑07‑26
-### Added
-- Hide `completions`‑subcommand, so it wont show up in `--help` listing  
+### Added  
+- `base64 encode` -subcommand
+
+### Changed
+- Hide `completions`‑subcommand, so it wont show up in `--help` listing
+
 ### Fixed
 - Fixed `install.sh`:
   - Script automatically changes to correct directory (`cd "$(dirname …)"`)  
