@@ -1,5 +1,5 @@
+use ::base64::{Engine as _, engine::general_purpose};
 use std::io::{self, Write};
-use ::base64::{engine::general_purpose, Engine as _};
 
 use crate::utils::read_input;
 
@@ -38,7 +38,6 @@ pub fn run(
             return Ok(());
         }
     };
-
 
     // Output
     if json {

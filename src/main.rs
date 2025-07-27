@@ -4,7 +4,7 @@ mod utils;
 
 use clap::{CommandFactory, Parser};
 use clap_complete::generate;
-use cli::{Cli, Commands, Base64Commands};
+use cli::{Base64Commands, Cli, Commands};
 
 fn main() {
     let cli = Cli::parse();
@@ -15,11 +15,11 @@ fn main() {
     match &cli.command {
         Commands::Ip { public, local } => {
             let _ = commands::ip::run(*public, *local, stdout, stderr);
-        },
+        }
         Commands::Completions { shell } => {
-                let mut cmd = Cli::command();
-                generate(*shell, &mut cmd, "devbox", &mut std::io::stdout());
-            },
+            let mut cmd = Cli::command();
+            generate(*shell, &mut cmd, "devbox", &mut std::io::stdout());
+        }
         Commands::Base64 { command } => match command {
             Base64Commands::Encode {
                 json,
@@ -37,7 +37,8 @@ fn main() {
                     stdout,
                     stderr,
                 );
-            },Base64Commands::Decode {
+            }
+            Base64Commands::Decode {
                 json,
                 pretty,
                 urlsafe,

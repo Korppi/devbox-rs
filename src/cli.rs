@@ -49,7 +49,7 @@ pub enum Base64Commands {
         json: bool,
 
         /// Pretty-print JSON (only with --json)
-        #[arg(long,requires = "json")]
+        #[arg(long, requires = "json")]
         pretty: bool,
 
         /// Omit base64 padding
@@ -71,7 +71,7 @@ pub enum Base64Commands {
         json: bool,
 
         /// Pretty-print JSON (only with --json)
-        #[arg(long,requires = "json")]
+        #[arg(long, requires = "json")]
         pretty: bool,
 
         /// Use URL-safe base64 variant

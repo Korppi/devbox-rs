@@ -6,11 +6,7 @@ mod cli_tests {
     #[test]
     fn encode_pretty_json_outputs_formatted() -> Result<(), Box<dyn std::error::Error>> {
         let mut cmd = Command::cargo_bin("devbox")?;
-        cmd.args(&[
-                "base64", "encode",
-                "--json", "--pretty",
-                "Hello"
-            ])
+        cmd.args(&["base64", "encode", "--json", "--pretty", "Hello"])
             .assert()
             .success()
             // Own row shows "input": "Hello"
@@ -29,7 +25,7 @@ mod cli_tests {
             .stderr(predicate::str::contains(
                 "error: the following required arguments were not provided:",
             ))
-            .stderr(predicate::str::contains("--json"));  
+            .stderr(predicate::str::contains("--json"));
         Ok(())
     }
 
@@ -37,12 +33,10 @@ mod cli_tests {
     fn encode_reads_from_stdin() -> Result<(), Box<dyn std::error::Error>> {
         let mut cmd = Command::cargo_bin("devbox")?;
         cmd.args(&["base64", "encode"])
-        .write_stdin("Hello\n")
-        .assert()
-        .success()
-        .stdout(predicate::str::contains("SGVsbG8="));
+            .write_stdin("Hello\n")
+            .assert()
+            .success()
+            .stdout(predicate::str::contains("SGVsbG8="));
         Ok(())
     }
 }
-
-
