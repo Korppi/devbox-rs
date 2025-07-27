@@ -26,3 +26,4 @@ clap_complete = "4.5.55"
 # sign the commit and the tag
 sign-commit = true
 sign-tag = true
+publish = false
