@@ -4,7 +4,7 @@ mod utils;
 
 use clap::{CommandFactory, Parser};
 use clap_complete::generate;
-use devbox::cli::{Cli, Commands, Base64Commands};
+use devbox::cli::{Base64Commands, Cli, Commands};
 
 fn main() {
     let cli = Cli::parse();

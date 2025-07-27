@@ -21,6 +21,5 @@ fn main() {
     man.render(&mut buffer).expect("could not render man page");
 
     // 4) Tallenna tiedostoksi
-    fs::write(out_dir.join("devbox.1"), buffer)
-        .expect("could not write man/devbox.1");
+    fs::write(out_dir.join("devbox.1"), buffer).expect("could not write man/devbox.1");
 }
