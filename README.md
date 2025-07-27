@@ -1,6 +1,6 @@
 # Devbox
 
-![Rust](https://img.shields.io/badge/language-Rust-red) ![license: MIT](https://img.shields.io/badge/license-MIT-green) [![CI](https://github.com/Korppi/devbox-rs/actions/workflows/ci.yaml/badge.svg?branch=development)](https://github.com/Korppi/devbox-rs/actions/workflows/ci.yaml) [![Release](https://github.com/Korppi/devbox-rs/actions/workflows/release.yaml/badge.svg?branch=master)](https://github.com/Korppi/devbox-rs/actions/workflows/release.yaml)
+![Rust](https://img.shields.io/badge/language-Rust-red) ![license: MIT](https://img.shields.io/badge/license-MIT-green) [![Coverage](https://github.com/Korppi/devbox-rs/actions/workflows/coverage.yaml/badge.svg)](https://github.com/Korppi/devbox-rs/actions/workflows/coverage.yaml) [![CI](https://github.com/Korppi/devbox-rs/actions/workflows/ci.yaml/badge.svg?branch=development)](https://github.com/Korppi/devbox-rs/actions/workflows/ci.yaml) [![Release](https://github.com/Korppi/devbox-rs/actions/workflows/release.yaml/badge.svg?branch=master)](https://github.com/Korppi/devbox-rs/actions/workflows/release.yaml)
 
 
 
