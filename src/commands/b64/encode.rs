@@ -1,5 +1,7 @@
-use std::io::{self, Read, Write};
+use std::io::{self, Write};
 use ::base64::{engine::general_purpose, Engine as _};
+
+use crate::utils::read_input;
 
 pub fn run(
     json: bool,
@@ -11,14 +13,7 @@ pub fn run(
     err: &mut dyn Write,
 ) -> io::Result<()> {
     // Get input string: from argument or stdin
-    let input_text = match input {
-        Some(text) => text,
-        None => {
-            let mut buffer = String::new();
-            io::stdin().read_to_string(&mut buffer)?;
-            buffer.trim_end().to_string()
-        }
-    };
+    let input_text = read_input(input)?;
 
     // Select engine
     let engine = if urlsafe {
