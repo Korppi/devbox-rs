@@ -26,6 +26,11 @@ pub enum Commands {
         #[arg(short, long)]
         local: bool,
     },
+    /// Encode or decode Base64 strings using RFC4648.
+    Base64 {
+        #[command(subcommand)]
+        command: Base64Commands,
+    },
     /// Generate shell completion script
     #[command(hide = true)]
     Completions {
@@ -33,4 +38,31 @@ pub enum Commands {
         #[arg(value_enum)]
         shell: clap_complete::Shell,
     },
+}
+
+#[derive(Subcommand)]
+pub enum Base64Commands {
+    /// Encode text to base64
+    Encode {
+        /// Set output to JSON format
+        #[arg(short, long)]
+        json: bool,
+
+        /// Pretty-print JSON (only with --json)
+        #[arg(long,requires = "json")]
+        pretty: bool,
+
+        /// Omit base64 padding
+        #[arg(long)]
+        no_pad: bool,
+
+        /// Use URL-safe base64 variant
+        #[arg(short, long)]
+        urlsafe: bool,
+
+        /// Input text (optional if using pipe)
+        input: Option<String>,
+    },
+
+    // Decode will be added later
 }

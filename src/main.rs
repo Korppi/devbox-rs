@@ -3,23 +3,40 @@ mod commands;
 
 use clap::{CommandFactory, Parser};
 use clap_complete::generate;
-use cli::{Cli, Commands};
+use cli::{Cli, Commands, Base64Commands};
 
 fn main() {
     let cli = Cli::parse();
 
+    let stdout = &mut std::io::stdout();
+    let stderr = &mut std::io::stderr();
+
     match &cli.command {
         Commands::Ip { public, local } => {
-            let _ = commands::ip::run(
-                *public,
-                *local,
-                &mut std::io::stdout(),
-                &mut std::io::stderr(),
-            );
-        }
+            let _ = commands::ip::run(*public, *local, stdout, stderr);
+        },
         Commands::Completions { shell } => {
-            let mut cmd = Cli::command();
-            generate(*shell, &mut cmd, "devbox", &mut std::io::stdout());
-        }
+                let mut cmd = Cli::command();
+                generate(*shell, &mut cmd, "devbox", &mut std::io::stdout());
+            },
+        Commands::Base64 { command } => match command {
+            Base64Commands::Encode {
+                json,
+                pretty,
+                no_pad,
+                urlsafe,
+                input,
+            } => {
+                let _ = commands::b64::encode::run(
+                    *json,
+                    *pretty,
+                    *no_pad,
+                    *urlsafe,
+                    input.clone(),
+                    stdout,
+                    stderr,
+                );
+            }
+        },
     }
 }
