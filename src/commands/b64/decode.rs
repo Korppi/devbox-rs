@@ -25,7 +25,7 @@ pub fn run(
     let decoded_bytes = match engine.decode(&input_text) {
         Ok(bytes) => bytes,
         Err(e) => {
-            writeln!(err, "Decode error: {}", e)?;
+            writeln!(err, "Decode error: {e}")?;
             return Ok(());
         }
     };
@@ -34,7 +34,7 @@ pub fn run(
     let decoded_string = match String::from_utf8(decoded_bytes) {
         Ok(s) => s,
         Err(e) => {
-            writeln!(err, "UTF-8 conversion error: {}", e)?;
+            writeln!(err, "UTF-8 conversion error: {e}")?;
             return Ok(());
         }
     };
@@ -52,11 +52,11 @@ pub fn run(
         };
 
         match encoded_json {
-            Ok(j) => writeln!(out, "{}", j)?,
-            Err(e) => writeln!(err, "JSON error: {}", e)?,
+            Ok(j) => writeln!(out, "{j}")?,
+            Err(e) => writeln!(err, "JSON error: {e}")?,
         }
     } else {
-        writeln!(out, "{}", decoded_string)?;
+        writeln!(out, "{decoded_string}")?;
     }
 
     Ok(())

@@ -43,11 +43,11 @@ pub fn run(
         };
 
         match encoded_json {
-            Ok(j) => writeln!(out, "{}", j)?,
-            Err(e) => writeln!(err, "JSON error: {}", e)?,
+            Ok(j) => writeln!(out, "{j}")?,
+            Err(e) => writeln!(err, "JSON error: {e}")?,
         }
     } else {
-        writeln!(out, "{}", encoded)?;
+        writeln!(out, "{encoded}")?;
     }
 
     Ok(())
