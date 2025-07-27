@@ -64,5 +64,21 @@ pub enum Base64Commands {
         input: Option<String>,
     },
 
-    // Decode will be added later
+    /// Decode base64 to text
+    Decode {
+        /// Set output to JSON format
+        #[arg(short, long)]
+        json: bool,
+
+        /// Pretty-print JSON (only with --json)
+        #[arg(long,requires = "json")]
+        pretty: bool,
+
+        /// Use URL-safe base64 variant
+        #[arg(short, long)]
+        urlsafe: bool,
+
+        /// Input text (optional if using pipe)
+        input: Option<String>,
+    },
 }

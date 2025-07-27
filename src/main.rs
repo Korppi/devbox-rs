@@ -37,6 +37,20 @@ fn main() {
                     stdout,
                     stderr,
                 );
+            },Base64Commands::Decode {
+                json,
+                pretty,
+                urlsafe,
+                input,
+            } => {
+                let _ = commands::b64::decode::run(
+                    *json,
+                    *pretty,
+                    *urlsafe,
+                    input.clone(),
+                    stdout,
+                    stderr,
+                );
             }
         },
     }
