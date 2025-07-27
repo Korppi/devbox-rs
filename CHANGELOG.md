@@ -1,7 +1,8 @@
-## [0.2.0] – 2025‑07‑26
+## [0.2.0] – 2025‑07‑27
 ### Added  
 - `base64 encode` -subcommand
 - `base64 decode` -subcommand
+- `install.sh` now generates man pages on linux
 
 ### Changed
 - Hide `completions`‑subcommand, so it wont show up in `--help` listing
