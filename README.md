@@ -28,7 +28,7 @@ from networking helpers to Base64 encoding/decoding and beyond.
 ### Option 1 – Pre-built binary 
 Please download from [Releases](https://github.com/Korppi/devbox-rs/releases).
 
-### Option 2 – Build from source 
+### Option 2 – Build from source (recommended) 
 Please install [Rust and Cargo](https://www.rust-lang.org/tools/install) first.
 
 #### Windows (PowerShell)
