@@ -8,16 +8,24 @@ on:
 
 jobs:
   tarpaulin:
+    # Tarpaulin toimii Linuxissa, joten rajataan runneriksi Ubuntu
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
+      - name: Install cargo-tarpaulin
+        run: cargo install cargo-tarpaulin --locked
+
       - name: Run Tarpaulin
         run: cargo tarpaulin --out Xml
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          files: ./coverage.xml
+          files: coverage.xml
