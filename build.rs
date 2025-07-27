@@ -16,7 +16,7 @@ fn main() {
         .expect("OUT_DIR not set");
 
     // 2) Luo hakemisto jos ei ole
-    fs::create_dir_all(&out_dir).expect("ei voitu luoda OUT_DIR-hakemistoa");
+    fs::create_dir_all(out_dir).expect("ei voitu luoda OUT_DIR-hakemistoa");
 
     // 3) Rakenna Clap-komento ja generoi man-sivu
     let cmd = cli::Cli::command();
