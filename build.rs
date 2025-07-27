@@ -1,7 +1,7 @@
 // build.rs
-use std::{fs, io::Write, path::Path};
 use clap::CommandFactory;
 use clap_mangen::Man;
+use std::{fs, io::Write, path::Path};
 
 // Ladataan CLI-määrittely suoraan lähdekoodista
 #[path = "src/cli.rs"]
@@ -11,10 +11,9 @@ fn main() {
     // 1) Hae Cargo:n build-scriptien ulostulohakemisto
     let binding = std::env::var_os("OUT_DIR");
     let out_dir = binding
-    .as_deref()           // Option<OsString> → Option<&OsStr>
-    .map(Path::new)       // nyt Path::new saa &OsStr
-    .expect("OUT_DIR not set");
-
+        .as_deref() // Option<OsString> → Option<&OsStr>
+        .map(Path::new) // nyt Path::new saa &OsStr
+        .expect("OUT_DIR not set");
 
     // 2) Luo hakemisto jos ei ole
     fs::create_dir_all(&out_dir).expect("ei voitu luoda OUT_DIR-hakemistoa");
