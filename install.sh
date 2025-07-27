@@ -51,6 +51,18 @@ else
     echo "Completion script already present in $PROFILE_FILE"
 fi
 
+# Man-sivun kopiointi
+echo "Installing man page…"
+if [ "$EUID" -ne 0 ]; then
+  echo "Note: copying man page requires sudo. Asking for elevation…"
+  sudo cp man/devbox.1 /usr/local/share/man/man1/
+  sudo mandb
+else
+  # jos jo root, ei tarvitse sudo
+  cp man/devbox.1 /usr/local/share/man/man1/
+  mandb
+fi
+
 echo "Done! Restart your terminal or run:"
 echo "  source ~/.bashrc"
 echo "  source ~/.devbox/devbox.bash"
