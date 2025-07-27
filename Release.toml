@@ -1,5 +1,0 @@
-# Release.toml
-sign-commit = true
-push-remote = "origin"
-tag-prefix = "v"
-changelog = "CHANGELOG.md"

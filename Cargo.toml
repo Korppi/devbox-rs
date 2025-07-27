@@ -17,8 +17,12 @@ assert_cmd = "2.0.17"
 [dev-dependencies]
 cargo-tarpaulin = "0.32.8"
 
-
 [build-dependencies]
 clap = { version = "4.5.41", features = ["derive"] }
 clap_mangen = "0.2.28"
 clap_complete = "4.5.55"
+
+[package.metadata.release]
+# sign the commit and the tag
+sign-commit = true
+sign-tag = true
