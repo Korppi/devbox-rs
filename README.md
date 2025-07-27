@@ -12,10 +12,14 @@ from networking helpers to Base64 encoding/decoding and beyond.
 
 - **`ip`**  
   Show public and/or local IP address of this machine.
+- **`base64 encode|decode`**  
+  - `--url`, `-u` Use URL-safe alphabet (`-` / `_`)  
+  - `--no-pad` Remove padding (`=`)  
+  - `--json`, `-j` Wrap result in JSON  
+  - `--pretty` Indent JSON (works only with `--json`)
 
 ## 🗺️ Roadmap
 
-- **base64** Ability for base64 encoding and decoding
 - **now** Show current date, time, weekday & ISO week number  
 - **clean-files** Find and optionally delete files by size/age 
 
