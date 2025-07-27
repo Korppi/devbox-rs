@@ -1,7 +1,7 @@
 // build.rs
 use clap::CommandFactory;
 use clap_mangen::Man;
-use std::{fs, io::Write, path::Path};
+use std::{fs, path::Path};
 
 // Ladataan CLI-määrittely suoraan lähdekoodista
 #[path = "src/cli.rs"]
@@ -19,7 +19,7 @@ fn main() {
     fs::create_dir_all(&out_dir).expect("ei voitu luoda OUT_DIR-hakemistoa");
 
     // 3) Rakenna Clap-komento ja generoi man-sivu
-    let mut cmd = cli::Cli::command();
+    let cmd = cli::Cli::command();
     let man = Man::new(cmd);
     let mut buffer = Vec::new();
     man.render(&mut buffer).expect("man-render epäonnistui");
