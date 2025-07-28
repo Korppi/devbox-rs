@@ -27,6 +27,7 @@ pub enum Commands {
         local: bool,
     },
     /// Encode or decode Base64 strings using RFC4648.
+    #[command(visible_alias="b64")]
     Base64 {
         #[command(subcommand)]
         command: Base64Commands,
