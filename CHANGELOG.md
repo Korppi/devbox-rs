@@ -1,3 +1,7 @@
+## [0.2.1] – 2025‑07‑28
+### Added
+- `base64` -subcommand now has alias b64
+
 ## [0.2.0] – 2025‑07‑27
 ### Added  
 - `base64 encode` -subcommand
