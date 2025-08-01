@@ -32,7 +32,21 @@ pub enum Commands {
         #[arg(short, long)]
         public: bool,        
     },
-    
+    /// Show current date and time
+    #[command(about = "Show current date, time, weekday and ISO week number")]
+    Now {
+        /// Use ISO 8601 format (e.g. "2025-07-28T14:23:00+02:00")
+        #[arg(short='I', long)]
+        iso: bool,
+
+        /// Show UTC time instead of local
+        #[arg(short, long)]
+        utc: bool,
+
+        /// Specify a timezone (e.g. "America/New_York")
+        #[arg(long, value_name = "TZ")]
+        tz: Option<String>,
+    },
     /// Generate shell completion script
     #[command(hide = true)]
     Completions {
