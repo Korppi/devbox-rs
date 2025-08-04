@@ -12,7 +12,10 @@ from networking helpers to Base64 encoding/decoding and beyond.
 
 - **`ip`**  
   Show public and/or local IP address of this machine.
+  - `--local`, `-l` Show local IP address
+  - `--public`, `-p` Show public IP address
 - **`base64 encode|decode`**  
+  Encode or decode Base64 strings using RFC4648.
   - `--url`, `-u` Use URL-safe alphabet (`-` / `_`)  
   - `--no-pad` Remove padding (`=`)  
   - `--json`, `-j` Wrap result in JSON  
@@ -20,8 +23,19 @@ from networking helpers to Base64 encoding/decoding and beyond.
 
 ## 🗺️ Roadmap
 
+### Features
 - **now** Show current date, time, weekday & ISO week number  
 - **clean-files** Find and optionally delete files by size/age 
+
+### Code quality
+- Add more tests through `Cucumber` or `Robot framework`
+
+## 🧪 Quality
+
+- ✅ Automated tests run on every push via **GitHub Actions** including cargo fmt and cargo clippy checks
+- 🚀 Release builds are created automatically when tags are pushed to `master`
+- 🔀 Uses `master` / `development` / `feature/*` branching strategy
+- 🧾 Commits follow the [Conventional Commits](https://www.conventionalcommits.org) standard
 
 ## 🚀 Installation
 
