@@ -40,11 +40,11 @@ pub enum Commands {
         iso: bool,
 
         /// Show UTC time instead of local
-        #[arg(short, long)]
+        #[arg(short, long, conflicts_with = "tz")]
         utc: bool,
 
         /// Specify a timezone (e.g. "America/New_York")
-        #[arg(long, value_name = "TZ")]
+        #[arg(long, value_name = "TZ", conflicts_with = "utc")]
         tz: Option<String>,
     },
     /// Generate shell completion script
