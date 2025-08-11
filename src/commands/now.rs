@@ -22,14 +22,13 @@ pub fn run(
                 if iso {
                     writeln!(out, "{}", local.to_rfc3339())?;
                 } else {
-                    writeln!(out, "{}", local)?;
+                    writeln!(out, "{local}")?;
                 }
             }
             Err(e) => {
                 writeln!(
                     err,
-                    "Error with timezone \"{}\": {}. Use IANA name, for example. Europe/Helsinki",
-                    tz_str, e
+                    "Error with timezone \"{tz_str}\": {e}. Use IANA name, for example. Europe/Helsinki"
                 );
             }
         }
@@ -37,7 +36,7 @@ pub fn run(
         if iso {
             writeln!(out, "{}", now_utc.to_rfc3339())?;
         } else {
-            writeln!(out, "{}", now_utc)?;
+            writeln!(out, "{now_utc}")?;
         }
     } else {
         // paikallinen aika
@@ -45,7 +44,7 @@ pub fn run(
         if iso {
             writeln!(out, "{}", dt_local.to_rfc3339())?;
         } else {
-            writeln!(out, "{}", dt_local)?;
+            writeln!(out, "{dt_local}")?;
         }
     }
     Ok(())
