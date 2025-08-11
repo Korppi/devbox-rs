@@ -46,6 +46,14 @@ pub enum Commands {
         /// Show UTC time instead of local
         #[arg(short, long, conflicts_with = "tz")]
         utc: bool,
+
+        /// Show week number
+        #[arg(long)]
+        week: bool,
+
+        /// Show weekday
+        #[arg(long)]
+        weekday: bool,
     },
     /// Generate shell completion script
     #[command(hide = true)]
