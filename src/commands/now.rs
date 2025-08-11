@@ -15,7 +15,7 @@ pub fn run(
     let now_utc = Utc::now();
     if let Some(tz_str) = tz {
         let tz_result = Tz::from_str(&tz_str);
-        
+
         match tz_result {
             Ok(tz) => {
                 let local = now_utc.with_timezone(&tz);
@@ -26,7 +26,11 @@ pub fn run(
                 }
             }
             Err(e) => {
-                writeln!(err, "Error with timezone \"{}\": {}. Use IANA name, for example. Europe/Helsinki", tz_str, e);
+                writeln!(
+                    err,
+                    "Error with timezone \"{}\": {}. Use IANA name, for example. Europe/Helsinki",
+                    tz_str, e
+                );
             }
         }
     } else if utc {
@@ -37,13 +41,12 @@ pub fn run(
         }
     } else {
         // paikallinen aika
-        let dt_local = now_utc.with_timezone(&Local); 
+        let dt_local = now_utc.with_timezone(&Local);
         if iso {
             writeln!(out, "{}", dt_local.to_rfc3339())?;
         } else {
             writeln!(out, "{}", dt_local)?;
         }
-         
     }
     Ok(())
 }

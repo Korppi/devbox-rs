@@ -30,13 +30,13 @@ pub enum Commands {
 
         /// Show only public IP address
         #[arg(short, long)]
-        public: bool,        
+        public: bool,
     },
     /// Show current date and time
     #[command(about = "Show current date, time, weekday and ISO week number")]
     Now {
         /// Use ISO 8601 format (e.g. "2025-07-28T14:23:00+02:00")
-        #[arg(short='I', long)]
+        #[arg(short = 'I', long)]
         iso: bool,
 
         /// Show UTC time instead of local
@@ -88,7 +88,7 @@ pub enum Base64Commands {
 
         /// Pretty-print JSON (only with --json)
         #[arg(long, requires = "json")]
-        pretty: bool,        
+        pretty: bool,
 
         /// Use URL-safe base64 variant
         #[arg(short, long)]
