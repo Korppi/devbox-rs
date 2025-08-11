@@ -13,7 +13,6 @@ pub fn run(
     err: &mut dyn Write,
 ) -> Result<()> {
     let now_utc = Utc::now();
-    // TODO: decide default format?
     if let Some(tz_str) = tz {
         let tz_result = Tz::from_str(&tz_str);
         
