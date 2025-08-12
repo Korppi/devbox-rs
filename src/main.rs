@@ -54,8 +54,8 @@ fn main() {
                 );
             }
         },
-        Commands::Now { iso, utc, tz } => {
-            let _ = commands::now::run(*iso, *utc, tz.clone(), stdout, stderr);
+        Commands::Now { iso, utc, tz, week, weekday } => {
+            let _ = commands::now::run(*iso, *utc, *week, *weekday, tz.clone(), stdout, stderr);
         }
     }
 }
