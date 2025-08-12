@@ -20,7 +20,7 @@ pub fn run(
         match tz_result {
             Ok(tz) => {
                 let local = now_utc.with_timezone(&tz);
-                print_datetime(out, local, iso,week);
+                print_datetime(out, local, iso, week);
             }
             Err(e) => {
                 writeln!(
@@ -30,11 +30,11 @@ pub fn run(
             }
         }
     } else if utc {
-        print_datetime(out, now_utc, iso,week);
+        print_datetime(out, now_utc, iso, week);
     } else {
         // paikallinen aika
         let dt_local = now_utc.with_timezone(&Local);
-       print_datetime(out, dt_local, iso,week);
+        print_datetime(out, dt_local, iso, week);
     }
     Ok(())
 }
@@ -43,7 +43,7 @@ fn print_datetime<W: Write>(
     mut out: W,
     dt: DateTime<impl chrono::TimeZone>,
     iso: bool,
-    week: bool
+    week: bool,
 ) {
     if iso {
         write!(out, "{}", dt.to_rfc3339());
