@@ -53,5 +53,5 @@ fn print_datetime<W: Write>(
     if week {
         write!(out, " | Week: {}", dt.iso_week().week());
     }
-    writeln!(out, "");
+    writeln!(out);
 }
