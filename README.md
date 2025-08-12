@@ -10,22 +10,29 @@ from networking helpers to Base64 encoding/decoding and beyond.
 
 ## ⚙️ Features
 
-- **`ip`**  
-  Show public and/or local IP address of this machine.
-  - `--local`, `-l` Show local IP address
-  - `--public`, `-p` Show public IP address
 - **`base64 encode|decode`**  
   Encode or decode Base64 strings using RFC4648.
   - `--url`, `-u` Use URL-safe alphabet (`-` / `_`)  
   - `--no-pad` Remove padding (`=`)  
   - `--json`, `-j` Wrap result in JSON  
   - `--pretty` Indent JSON (works only with `--json`)
+- **`ip`**  
+  Show public and/or local IP address of this machine.
+  - `--local`, `-l` Show local IP address
+  - `--public`, `-p` Show public IP address
+- **`now`**
+  Show current date and time. 
+  - `--iso`, `-I` Show datetime in iso format (ISO 8601)
+  - `--tz` Show datetime at wanted timezone
+  - `--utc`, `-u` Show UTC datetime
+  - `--week` Show week number
 
 ## 🗺️ Roadmap
 
-### Features
-- **now** Show current date, time, weekday & ISO week number  
-- **clean-files** Find and optionally delete files by size/age 
+### Features 
+- **pigsay** Cowsay clone! Make pig say things!
+- **find** Find and optionally delete files by size/age
+- **hangman** Hangman game.  
 
 ### Code quality
 - Add more tests through `Cucumber` or `Robot framework`
