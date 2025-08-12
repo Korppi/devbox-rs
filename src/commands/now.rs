@@ -23,7 +23,7 @@ pub fn run(
                 print_datetime(out, local, iso, week);
             }
             Err(e) => {
-                writeln!(
+                let _ = writeln!(
                     err,
                     "Error with timezone \"{tz_str}\": {e}. Use IANA name, for example. Europe/Helsinki"
                 );
@@ -46,12 +46,12 @@ fn print_datetime<W: Write>(
     week: bool,
 ) {
     if iso {
-        write!(out, "{}", dt.to_rfc3339());
+        let _ = write!(out, "{}", dt.to_rfc3339());
     } else {
-        write!(out, "{}", dt.naive_local());
+        let _ = write!(out, "{}", dt.naive_local());
     }
     if week {
-        write!(out, " | Week: {}", dt.iso_week().week());
+        let _ = write!(out, " | Week: {}", dt.iso_week().week());
     }
-    writeln!(out);
+    let _ = writeln!(out);
 }
