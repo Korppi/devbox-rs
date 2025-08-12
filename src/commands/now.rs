@@ -1,6 +1,6 @@
 use std::io::{Result, Write};
 
-use chrono::{DateTime, Local, Utc};
+use chrono::{DateTime, Datelike, Local, Utc};
 use chrono_tz::Tz;
 
 use std::str::FromStr;
@@ -9,7 +9,6 @@ pub fn run(
     iso: bool,
     utc: bool,
     week: bool,
-    weekday: bool,
     tz: Option<String>,
     out: &mut dyn Write,
     err: &mut dyn Write,
@@ -21,7 +20,7 @@ pub fn run(
         match tz_result {
             Ok(tz) => {
                 let local = now_utc.with_timezone(&tz);
-                let _ = print_datetime(out, local, iso);
+                print_datetime(out, local, iso,week);
             }
             Err(e) => {
                 writeln!(
@@ -31,11 +30,11 @@ pub fn run(
             }
         }
     } else if utc {
-        let _ = print_datetime(out, now_utc, iso);
+        print_datetime(out, now_utc, iso,week);
     } else {
         // paikallinen aika
         let dt_local = now_utc.with_timezone(&Local);
-       let _ = print_datetime(out, dt_local, iso);
+       print_datetime(out, dt_local, iso,week);
     }
     Ok(())
 }
@@ -44,10 +43,15 @@ fn print_datetime<W: Write>(
     mut out: W,
     dt: DateTime<impl chrono::TimeZone>,
     iso: bool,
-) -> Result<()> {
+    week: bool
+) {
     if iso {
-        writeln!(out, "{}", dt.to_rfc3339())
+        write!(out, "{}", dt.to_rfc3339());
     } else {
-        writeln!(out, "{}", dt.naive_local())
+        write!(out, "{}", dt.naive_local());
     }
+    if week {
+        write!(out, " | Week: {}", dt.iso_week().week());
+    }
+    writeln!(out, "");
 }

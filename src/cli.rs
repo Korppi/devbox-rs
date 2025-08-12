@@ -50,10 +50,6 @@ pub enum Commands {
         /// Show week number
         #[arg(long)]
         week: bool,
-
-        /// Show weekday
-        #[arg(long)]
-        weekday: bool,
     },
     /// Generate shell completion script
     #[command(hide = true)]
