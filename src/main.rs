@@ -56,9 +56,9 @@ fn main() {
         },
         Commands::Now { iso, utc, tz, week } => {
             let _ = commands::now::run(*iso, *utc, *week, tz.clone(), stdout, stderr);
-        },
+        }
         Commands::Pigsay { eye, tail, input } => {
             let _ = commands::pigsay::run(eye.clone(), tail.clone(), input.clone(), stdout, stderr);
-        },
+        }
     }
 }

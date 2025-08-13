@@ -17,8 +17,8 @@ pub fn run(
 ) -> Result<()> {
     let pig = PIG;
     let pig = pig.replace("1", &eye.to_string());
-    let pig =pig.replace("2", &tail.to_string());
+    let pig = pig.replace("2", &tail.to_string());
     writeln!(out, "{pig}")?;
-        
+
     Ok(())
 }
