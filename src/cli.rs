@@ -54,6 +54,14 @@ pub enum Commands {
     /// Talking PIG!
     #[command(about = "It is a talking pig on your commandline!")]
     Pigsay {
+        /// Set eye for pig
+        #[arg(short, long, default_value = "o")]
+        eye: char,
+
+        /// Set tail for pig
+        #[arg(short, long, default_value = "Q")]
+        tail: char,
+
         /// Input text (optional if using pipe)
         input: Option<String>,
     },
