@@ -51,6 +51,12 @@ pub enum Commands {
         #[arg(long)]
         week: bool,
     },
+    /// Talking PIG!
+    #[command(about = "It is a talking pig on your commandline!")]
+    Pigsay {
+        /// Input text (optional if using pipe)
+        input: Option<String>,
+    },
     /// Generate shell completion script
     #[command(hide = true)]
     Completions {
