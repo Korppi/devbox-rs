@@ -26,6 +26,10 @@ from networking helpers to Base64 encoding/decoding and beyond.
   - `--tz` Show datetime at wanted timezone
   - `--utc`, `-u` Show UTC datetime
   - `--week` Show week number
+- **`pigsay`**
+  Make pig say things. 
+  - `--eye`, `-e` Change pig eye
+  - `--tail`, `-t` Change pig tail
 
 ## 🗺️ Roadmap
 
