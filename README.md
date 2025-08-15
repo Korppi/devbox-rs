@@ -79,6 +79,19 @@ If it fails with "permission denied":
 chmod +x install.sh
 ```
 
+If it fails with "Could not find openssl via pkg-config" then do following if using Almalinux or similar:
+```bash
+sudo dnf groupinstall -y "Development Tools"
+sudo dnf install -y openssl-devel pkgconf pkgconf-pkg-config
+# check that pkg-config finds openssl, this will print something like -I/usr/include ... -lssl -lcrypto  
+pkg-config --libs --cflags openssl
+```
+
+After this run install.sh again.
+```bash
+./install.sh
+```
+
 ## 🛠️ Why Devbox?
 
 - ❤️ **Hobby**  
