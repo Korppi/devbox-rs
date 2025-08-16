@@ -64,6 +64,10 @@ pub enum Commands {
 
         /// Input text (optional if using pipe)
         input: Option<String>,
+
+        /// Set widht for text wrapping
+        #[arg(short, long, default_value_t = 30, value_parser = clap::value_parser!(u32).range(10..=100))]
+        width: u32,
     },
     /// Generate shell completion script
     #[command(hide = true)]
