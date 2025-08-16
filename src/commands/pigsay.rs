@@ -2,6 +2,8 @@ use std::io::{Result, Write};
 
 use crate::utils::read_input;
 
+
+
 const PIG: &str = r#"
          _/|________
         / 1         \
@@ -19,7 +21,7 @@ pub fn run(
 ) -> Result<()>  {
 
     let input_text = read_input(input)?;
-    let vec_text = textwrap::wrap(&input_text, 18);
+    let vec_text = textwrap::wrap(&input_text, 30);
     
     for text in vec_text{
         writeln!(out, "{text}")?;
