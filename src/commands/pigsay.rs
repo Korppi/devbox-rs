@@ -18,7 +18,7 @@ pub fn run(
     input: Option<String>,
     width: usize,
     out: &mut dyn Write,
-    err: &mut dyn Write,
+    _: &mut dyn Write,
 ) -> Result<()>  {
     let input_text = read_input(input)?;
     let vec_text = textwrap::wrap(&input_text, width);
