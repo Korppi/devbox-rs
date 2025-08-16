@@ -1,5 +1,7 @@
 use std::io::{Result, Write};
 
+use crate::utils::read_input;
+
 const PIG: &str = r#"
          _/|________
         / 1         \
@@ -14,7 +16,15 @@ pub fn run(
     input: Option<String>,
     out: &mut dyn Write,
     err: &mut dyn Write,
-) -> Result<()> {
+) -> Result<()>  {
+
+    let input_text = read_input(input)?;
+    let vec_text = textwrap::wrap(&input_text, 18);
+    
+    for text in vec_text{
+        writeln!(out, "{text}")?;
+    }
+
     let pig = PIG;
     let pig = pig.replace("1", &eye.to_string());
     let pig = pig.replace("2", &tail.to_string());
