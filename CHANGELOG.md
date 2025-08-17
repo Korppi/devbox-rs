@@ -1,3 +1,7 @@
+## [0.4.1] – 2025‑08-17
+### Fixed  
+- `pigsay` -subcommand now builds bubble better, if width is not given by user and given input is short
+
 ## [0.4.0] – 2025‑08-17
 ### Added  
 - `pigsay` -subcommand
