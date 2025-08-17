@@ -19,21 +19,34 @@ pub fn run(
     width: usize,
     out: &mut dyn Write,
     _: &mut dyn Write,
-) -> Result<()>  {
+) -> Result<()> {
     let input_text = read_input(input)?;
     let vec_text = textwrap::wrap(&input_text, width);
-    
+
     let bubble_top = "_".repeat(width + BUBBLE_OFFSET * 2);
     writeln!(out, " {bubble_top}")?;
-    writeln!(out, "{}{}{}", "/", " ".repeat(width + BUBBLE_OFFSET * 2), "\\")?;
+    writeln!(
+        out,
+        "{}{}{}",
+        "/",
+        " ".repeat(width + BUBBLE_OFFSET * 2),
+        "\\"
+    )?;
 
-    for text in vec_text{
+    for text in vec_text {
         write!(out, "|{}", " ".repeat(BUBBLE_OFFSET))?;
         write!(out, "{text}")?;
-        write!(out, "{}|", " ".repeat(BUBBLE_OFFSET  + width-text.len()))?;
+        write!(out, "{}|", " ".repeat(BUBBLE_OFFSET + width - text.len()))?;
         write!(out, "\n")?;
     }
-    writeln!(out, "{}{}  {}{}", "\\","_".repeat(3), "_".repeat(width - 5 + BUBBLE_OFFSET * 2), "/")?;
+    writeln!(
+        out,
+        "{}{}  {}{}",
+        "\\",
+        "_".repeat(3),
+        "_".repeat(width - 5 + BUBBLE_OFFSET * 2),
+        "/"
+    )?;
     write!(out, "    \\|")?;
 
     let pig = PIG;
