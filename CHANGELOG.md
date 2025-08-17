@@ -1,3 +1,7 @@
+## [0.4.0] – 2025‑08-17
+### Added  
+- `pigsay` -subcommand
+
 ## [0.3.0] – 2025‑08-12
 ### Added  
 - `now` -subcommand
