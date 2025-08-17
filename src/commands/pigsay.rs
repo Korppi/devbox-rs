@@ -27,25 +27,21 @@ pub fn run(
     writeln!(out, " {bubble_top}")?;
     writeln!(
         out,
-        "{}{}{}",
-        "/",
-        " ".repeat(width + BUBBLE_OFFSET * 2),
-        "\\"
+        "/{}\\",
+        " ".repeat(width + BUBBLE_OFFSET * 2)
     )?;
 
     for text in vec_text {
         write!(out, "|{}", " ".repeat(BUBBLE_OFFSET))?;
         write!(out, "{text}")?;
         write!(out, "{}|", " ".repeat(BUBBLE_OFFSET + width - text.len()))?;
-        write!(out, "\n")?;
+        writeln!(out)?;
     }
     writeln!(
         out,
-        "{}{}  {}{}",
-        "\\",
+        "\\{}  {}/",
         "_".repeat(3),
-        "_".repeat(width - 5 + BUBBLE_OFFSET * 2),
-        "/"
+        "_".repeat(width - 5 + BUBBLE_OFFSET * 2)
     )?;
     write!(out, "    \\|")?;
 
