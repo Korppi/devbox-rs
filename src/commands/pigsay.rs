@@ -16,11 +16,17 @@ pub fn run(
     eye: char,
     tail: char,
     input: Option<String>,
-    width: usize,
+    mut width: usize,
     out: &mut dyn Write,
     _: &mut dyn Write,
 ) -> Result<()> {
     let input_text = read_input(input)?;
+
+    if input_text.len() < width {
+        width = input_text.len() as usize;
+        width = width.clamp(5, 100);
+    }
+
     let vec_text = textwrap::wrap(&input_text, width);
 
     let bubble_top = "_".repeat(width + BUBBLE_OFFSET * 2);
