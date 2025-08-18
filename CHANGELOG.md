@@ -1,3 +1,7 @@
+## [0.4.2] – 2025‑08-18
+### Fixed  
+- `pigsay` -subcommand bubble width and padding is now calculated by character count, not byte count
+
 ## [0.4.1] – 2025‑08-17
 ### Fixed  
 - `pigsay` -subcommand now builds bubble better, if width is not given by user and given input is short
