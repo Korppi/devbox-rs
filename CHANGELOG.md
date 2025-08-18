@@ -1,3 +1,7 @@
+## [0.4.3] – 2025‑08-18
+### Fixed  
+- `install.sh` script now handles man page generation better, even is installed multiple time by building from source
+
 ## [0.4.2] – 2025‑08-18
 ### Fixed  
 - `pigsay` -subcommand bubble width and padding is now calculated by character count, not byte count
