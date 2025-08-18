@@ -36,7 +36,11 @@ pub fn run(
     for text in vec_text {
         write!(out, "|{}", " ".repeat(BUBBLE_OFFSET))?;
         write!(out, "{text}")?;
-        write!(out, "{}|", " ".repeat(BUBBLE_OFFSET + width - text.chars().count()))?;
+        write!(
+            out,
+            "{}|",
+            " ".repeat(BUBBLE_OFFSET + width - text.chars().count())
+        )?;
         writeln!(out)?;
     }
     writeln!(
