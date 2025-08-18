@@ -22,8 +22,8 @@ pub fn run(
 ) -> Result<()> {
     let input_text = read_input(input)?;
 
-    if input_text.len() < width {
-        width = input_text.len() as usize;
+    if input_text.chars().count() < width {
+        width = input_text.chars().count() as usize;
         width = width.clamp(5, 100);
     }
 
@@ -36,7 +36,7 @@ pub fn run(
     for text in vec_text {
         write!(out, "|{}", " ".repeat(BUBBLE_OFFSET))?;
         write!(out, "{text}")?;
-        write!(out, "{}|", " ".repeat(BUBBLE_OFFSET + width - text.len()))?;
+        write!(out, "{}|", " ".repeat(BUBBLE_OFFSET + width - text.chars().count()))?;
         writeln!(out)?;
     }
     writeln!(
