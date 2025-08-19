@@ -56,7 +56,7 @@ fn main() {
         },
         Commands::Now { iso, utc, tz, week } => {
             let _ = commands::now::run(*iso, *utc, *week, tz.clone(), stdout, stderr);
-        }
+        },
         Commands::Pigsay {
             eye,
             tail,
@@ -65,6 +65,10 @@ fn main() {
         } => {
             let _ =
                 commands::pigsay::run(*eye, *tail, input.clone(), *width as usize, stdout, stderr);
+        },
+        Commands::Hangman {} => {
+            let _ =
+                commands::hangman::run( stdout, stderr);
         }
     }
 }

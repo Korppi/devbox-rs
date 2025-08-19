@@ -32,6 +32,9 @@ pub enum Commands {
         #[arg(short, long)]
         public: bool,
     },
+    /// Play hangman
+    #[command()]
+    Hangman {},
     /// Show current date and time
     #[command(about = "Show current date, time, weekday and ISO week number")]
     Now {
