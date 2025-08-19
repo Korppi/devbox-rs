@@ -16,6 +16,7 @@ assert_cmd = "2.0.17"
 chrono = "0.4.41"
 chrono-tz = { version="0.10.4", features = ["case-insensitive"] }
 textwrap = {version="0.16",features = ["smawk"]}
+ratatui = { version = "0.29.0", features = ["all-widgets"] }
 
 [dev-dependencies]
 cargo-tarpaulin = "0.32.8"
